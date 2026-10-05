@@ -26,10 +26,13 @@
     }
   </script>
   <style>
+    /* CSS Khas Untuk Kad Flashcard Flip (Hafalan) */
     .perspective-1000 { perspective: 1000px; }
     .transform-style-3d { transform-style: preserve-3d; }
     .backface-hidden { backface-visibility: hidden; }
     .rotate-y-180 { transform: rotateY(180deg); }
+    .flip-card-inner { transition: transform 0.6s; transform-style: preserve-3d; }
+    .flip-card:hover .flip-card-inner { transform: rotateY(180deg); }
     
     @keyframes pulse-glow {
       0%, 100% { box-shadow: 0 0 15px rgba(245, 158, 11, 0.3); }
@@ -40,22 +43,23 @@
 </head>
 <body class="bg-[#F8FAFC] dark:bg-slate-900 text-slate-800 dark:text-slate-100 font-sans transition-colors duration-300">
 
-  <!-- HEADER -->
+  <!-- HEADER NAVIGATION -->
   <header class="bg-edu-900 text-white border-b border-edu-700 sticky top-0 z-50 shadow-md">
     <div class="max-w-7xl mx-auto px-6 py-4 flex justify-between items-center">
       <div class="flex items-center space-x-3">
         <div class="w-10 h-10 bg-edu-500 rounded-xl flex items-center justify-center text-white font-bold text-xl shadow-inner">
-          <i class="fa-solid fa-compass-drafting"></i>
+          <i class="fa-solid fa-graduation-cap"></i>
         </div>
         <div>
           <h1 class="font-extrabold text-lg tracking-tight leading-none text-white">Akademi Pendidikan 21</h1>
-          <span class="text-[11px] text-edu-100 opacity-80">Modul Lengkap & Game Misi Pendidik Global</span>
+          <span class="text-[11px] text-edu-100 opacity-80">Modul Interaktif & Hafalan Mantap</span>
         </div>
       </div>
       
       <div class="flex items-center space-x-6 text-sm font-medium">
-        <a href="#nota" class="hidden md:inline-block hover:text-edu-50 transition"><i class="fa-solid fa-book-open mr-1"></i> Nota Lengkap</a>
-        <a href="#game-section" class="hidden md:inline-block hover:text-edu-50 transition text-amber-400 font-bold"><i class="fa-solid fa-gamepad mr-1"></i> Misi Interaktif</a>
+        <a href="#hafalan-pantas" class="hidden md:inline-block hover:text-amber-300 transition text-amber-400 font-bold"><i class="fa-solid fa-bolt mr-1"></i> Kad Hafalan</a>
+        <a href="#nota-lengkap" class="hidden md:inline-block hover:text-edu-50 transition"><i class="fa-solid fa-book-open mr-1"></i> Nota Terperinci</a>
+        <a href="#game-section" class="hidden md:inline-block hover:text-edu-50 transition text-emerald-400 font-bold"><i class="fa-solid fa-gamepad mr-1"></i> Game Simulasi</a>
         <button id="themeToggle" class="p-2 rounded-lg bg-edu-800 hover:bg-edu-700 text-edu-100 transition border border-edu-700">
           <i class="fa-solid fa-moon dark:hidden"></i>
           <i class="fa-solid fa-sun hidden dark:block text-amber-400"></i>
@@ -71,396 +75,207 @@
     
     <div class="max-w-5xl mx-auto text-center space-y-6 relative z-10">
       <span class="bg-accent-gold/20 text-accent-gold border border-accent-gold/30 text-xs font-bold px-4 py-1.5 rounded-full uppercase tracking-widest inline-flex items-center gap-2">
-        <i class="fa-solid fa-graduation-cap"></i> Modul Digital + Simulasi Pengajaran
+        <i class="fa-solid fa-brain"></i> Edisi Lengkap + Peta Minda Interaktif
       </span>
       <h2 class="text-3xl md:text-5xl font-extrabold tracking-tight leading-tight">
         Globalisasi Pendidikan & Cabaran Warga Pendidik
       </h2>
       <p class="text-slate-300 max-w-3xl mx-auto text-sm md:text-base leading-relaxed">
-        Penerangan komprehensif mengikut silibus penuh serta simulasi keputusan menerusi Game Misi Pendidik Global.
+        Pusat rujukan komprehensif mengandungi **Nota Lengkap Silibus PDF**, **Kad Hafalan Pantas (Flashcards)**, **Peta Minda Visual**, serta **Simulasi Game Misi Pendidik Global**.
       </p>
     </div>
   </section>
 
-  <main id="nota" class="max-w-6xl mx-auto px-6 py-12 space-y-16">
+  <main class="max-w-7xl mx-auto px-6 py-12 space-y-20">
 
-    <!-- SEKSYEN 1: DEFINISI & PERKAMPUNGAN GLOBAL -->
-    <section class="space-y-6">
-      <div class="flex items-center space-x-3 border-b border-slate-200 dark:border-slate-700 pb-4">
-        <div class="p-3 bg-edu-500 text-white rounded-xl shadow-md">
-          <i class="fa-solid fa-globe text-xl"></i>
-        </div>
-        <div>
-          <h3 class="text-2xl font-bold">1. Pengenalan & Perkampungan Global</h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400">Takrifan dan latar belakang sejarah globalisasi.</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
-        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 space-y-3">
-          <span class="text-xs font-bold text-edu-600 bg-edu-50 dark:bg-edu-900/40 px-3 py-1 rounded-full uppercase">Perkampungan Global</span>
-          <h4 class="font-bold text-base">Konsep Perkembangan Teknologi (Perkins, 1992; Tun Dr. Mahathir, 1992)</h4>
-          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-            Perkembangan pesat IT menjadikan dunia seperti sebuah perkampungan kecil tanpa sempadan fizikal. Masyarakat dunia berkongsi maklumat dan isu universal seperti pencemaran, wabak penyakit, masalah dadah, dan pendidikan.
-          </p>
-        </div>
-
-        <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 space-y-3">
-          <span class="text-xs font-bold text-amber-600 bg-amber-50 dark:bg-amber-900/40 px-3 py-1 rounded-full uppercase">Sejarah Istilah</span>
-          <h4 class="font-bold text-base">Penerbitan Buku 'Toward New Education' (1930)</h4>
-          <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
-            Penggunaan terawal istilah <em>globalization</em> dicatatkan pada tahun 1930 untuk menggambarkan liputan pengasahan potensi manusia secara menyeluruh Pasca Pasca-Penjajahan.
-          </p>
-        </div>
-      </div>
-
-      <!-- 4 ASPEK IMF -->
-      <div class="bg-slate-100 dark:bg-slate-800/60 p-6 rounded-2xl space-y-4 border border-slate-200 dark:border-slate-700">
-        <h4 class="font-bold text-xs uppercase text-slate-500 tracking-wider">4 Aspek Utama Globalisasi (IMF, 2000)</h4>
-        <div class="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-          <div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
-            <i class="fa-solid fa-right-left text-edu-500 text-xl mb-2"></i>
-            <h5 class="font-bold text-xs">1. Perdagangan</h5>
-            <p class="text-[11px] text-slate-500 dark:text-slate-400">Pertukaran barang & perkhidmatan pendidikan.</p>
-          </div>
-          <div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
-            <i class="fa-solid fa-money-bill-trend-up text-emerald-500 text-xl mb-2"></i>
-            <h5 class="font-bold text-xs">2. Pergerakan Modal</h5>
-            <p class="text-[11px] text-slate-500 dark:text-slate-400">Pelaburan asing (FDI) & aliran kewangan.</p>
-          </div>
-          <div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
-            <i class="fa-solid fa-people-carry-box text-purple-500 text-xl mb-2"></i>
-            <h5 class="font-bold text-xs">3. Pergerakan Manusia</h5>
-            <p class="text-[11px] text-slate-500 dark:text-slate-400">Mobiliti pakar, tenaga kerja & pelajar.</p>
-          </div>
-          <div class="bg-white dark:bg-slate-800 p-4 rounded-xl border border-slate-200 dark:border-slate-700">
-            <i class="fa-solid fa-book-atlas text-amber-500 text-xl mb-2"></i>
-            <h5 class="font-bold text-xs">4. Penyebaran Ilmu</h5>
-            <p class="text-[11px] text-slate-500 dark:text-slate-400">Akses maklumat & dapatan kajian global.</p>
-          </div>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEKSYEN 2: IMPAK LENGKAP WARGA PENDIDIK DI MALAYSIA -->
-    <section class="space-y-6">
-      <div class="flex items-center space-x-3 border-b border-slate-200 dark:border-slate-700 pb-4">
-        <div class="p-3 bg-emerald-600 text-white rounded-xl shadow-md">
-          <i class="fa-solid fa-chalkboard-user text-xl"></i>
-        </div>
-        <div>
-          <h3 class="text-2xl font-bold">2. Implikasi Terhadap Warga Pendidik di Malaysia</h3>
-          <p class="text-xs text-slate-500 dark:text-slate-400">8 Kesan Positif & 6 Cabaran utama.</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-2 gap-8">
-        <!-- 8 POSITIF -->
-        <div class="bg-emerald-50/50 dark:bg-emerald-950/20 border border-emerald-200 dark:border-emerald-800 p-6 rounded-2xl space-y-3">
-          <h4 class="font-bold text-base text-emerald-700 dark:text-emerald-400 flex items-center gap-2">
-            <i class="fa-solid fa-circle-check"></i> 8 Kesan Positif Utama
-          </h4>
-          <ul class="list-disc list-inside space-y-2 text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-            <li><strong>Budaya pembelajaran sepanjang hayat:</strong> Menggalakkan penerokaan ilmu tanpa had masa dan usia.</li>
-            <li><strong>Penguasaan dwibahasa:</strong> Kemahiran Bahasa Melayu dan Bahasa Inggeris untuk komunikasi antarabangsa.</li>
-            <li><strong>Penguasaan ICT:</strong> Kemahiran pedagogi berasaskan peranti moden melangkaui ruang fizikal.</li>
-            <li><strong>Pensiswazahan guru:</strong> Peningkatan kelayakan akademik tenaga pengajar sekolah.</li>
-            <li><strong>Perkongsian kajian P&P:</strong> Akses hasil penyelidikan dan jurnal peringkat antarabangsa.</li>
-            <li><strong>Peningkatan kualiti pendidikan:</strong> Standard pengajaran disesuaikan mengikut piawaian global.</li>
-            <li><strong>Peluang kerjaya antarabangsa:</strong> Keupayaan berkhidmat di institusi pendidikan luar negara.</li>
-            <li><strong>Pemikiran berasaskan kelebihan berbanding:</strong> Mengaplikasi Model Heckscher-Ohlin (HO) dalam kemahiran.</li>
-          </ul>
-        </div>
-
-        <!-- 6 NEGATIF -->
-        <div class="bg-rose-50/50 dark:bg-rose-950/20 border border-rose-200 dark:border-rose-800 p-6 rounded-2xl space-y-3">
-          <h4 class="font-bold text-base text-rose-700 dark:text-rose-400 flex items-center gap-2">
-            <i class="fa-solid fa-triangle-exclamation"></i> 6 Cabaran & Risiko Utama
-          </h4>
-          <ul class="list-disc list-inside space-y-2 text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-            <li><strong>Pengaliran keluar tenaga pakar (Brain Drain):</strong> Penghijrahan pakar tempatan ke luar negara.</li>
-            <li><strong>Peminggiran Bahasa Melayu:</strong> Risiko penguasaan bahasa ibunda terhakis oleh bahasa komersial.</li>
-            <li><strong>Komersialisasi pendidikan:</strong> Risiko mengutamakan keuntungan berbanding kualiti dan kebajikan.</li>
-            <li><strong>Penyebaran maklumat tidak sah:</strong> Risiko pengaruh budaya luar yang terpesong daripada moral.</li>
-            <li><strong>Jurang pengangguran:</strong> Ketidakpadanan kemahiran graduan dengan keperluan pasaran.</li>
-            <li><strong>Persaingan institusi awam vs swasta:</strong> Tekanan komersial terhadap sekolah & universiti awam.</li>
-          </ul>
-        </div>
-      </div>
-    </section>
-
-    <!-- SEKSYEN 3: ANALISIS FALSAFAH PENDIDIKAN -->
-    <section class="bg-slate-900 text-white p-8 rounded-3xl space-y-6 shadow-xl">
-      <div class="flex items-center space-x-3">
-        <div class="p-3 bg-accent-gold text-slate-900 rounded-xl font-bold">
-          <i class="fa-solid fa-brain text-xl"></i>
-        </div>
-        <div>
-          <h3 class="text-2xl font-bold">3. Analisis Falsafah Pendidikan</h3>
-          <p class="text-xs text-slate-300">Epistemologi, Ontologi, dan Metodologi.</p>
-        </div>
-      </div>
-
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-6 text-xs">
-        <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/10 space-y-2">
-          <span class="text-accent-gold font-bold uppercase text-[10px]">1. Epistemologi</span>
-          <h4 class="font-bold text-sm text-white">Rasionalisme vs Non-Rasionalis</h4>
-          <p class="text-slate-300 leading-relaxed">
-            Meskipun wujud kebangkitan anti-rasionalis, rasionalisme tetap menjadi teras kebenaran saintifik dalam sistem pendidikan moden.
-          </p>
-        </div>
-
-        <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/10 space-y-2">
-          <span class="text-accent-gold font-bold uppercase text-[10px]">2. Ontologi</span>
-          <h4 class="font-bold text-sm text-white">Maya vs Sempadan Fizikal</h4>
-          <p class="text-slate-300 leading-relaxed">
-            Konsep dunia tanpa sempadan terhad di alam maya; undang-undang fizikal negara (seperti pasport) kekal berkuat kuasa.
-          </p>
-        </div>
-
-        <div class="bg-white/10 backdrop-blur-md p-5 rounded-2xl border border-white/10 space-y-2">
-          <span class="text-accent-gold font-bold uppercase text-[10px]">3. Metodologi</span>
-          <h4 class="font-bold text-sm text-white">Pedagogi E-Learning</h4>
-          <p class="text-slate-300 leading-relaxed">
-            Kaedah pengajaran bertukar kepada ijazah francais, e-learning, bilik darjah maya, dan carian maklumat digital.
-          </p>
-        </div>
-      </div>
-    </section>
-
-    <!-- GAME SECTION: MISI PENDIDIK GLOBAL -->
-    <section id="game-section" class="relative bg-slate-950 border-2 border-amber-500/50 rounded-3xl p-6 md:p-10 text-white shadow-2xl overflow-hidden game-card-glow">
-      <div class="absolute -right-10 -bottom-10 w-64 h-64 bg-amber-500/10 rounded-full blur-3xl pointer-events-none"></div>
-      <div class="absolute -left-10 -top-10 w-64 h-64 bg-edu-500/10 rounded-full blur-3xl pointer-events-none"></div>
-
-      <!-- GAME DASHBOARD HEADER -->
-      <div class="relative z-10 flex flex-col md:flex-row md:items-center justify-between gap-4 border-b border-slate-800 pb-6">
-        <div class="flex items-center space-x-4">
-          <div class="w-14 h-14 bg-gradient-to-tr from-amber-500 to-amber-300 text-slate-950 rounded-2xl flex items-center justify-center font-black text-2xl shadow-lg">
-            <i class="fa-solid fa-gamepad"></i>
+    <!-- SEKSYEN BAHARU: ZON HAFALAN PANTAS (FLASHCARDS) -->
+    <section id="hafalan-pantas" class="space-y-6">
+      <div class="flex items-center justify-between border-b border-slate-200 dark:border-slate-700 pb-4">
+        <div class="flex items-center space-x-3">
+          <div class="p-3 bg-amber-500 text-slate-950 rounded-xl shadow-md font-bold">
+            <i class="fa-solid fa-bolt text-xl"></i>
           </div>
           <div>
-            <div class="flex items-center space-x-2">
-              <span class="bg-amber-400/20 text-amber-400 text-[10px] font-extrabold px-2.5 py-0.5 rounded-full uppercase tracking-wider">Simulasi Interaktif</span>
-              <span class="text-slate-400 text-xs">• Sistem Pilihan Strategik</span>
-            </div>
-            <h3 class="text-2xl font-extrabold tracking-tight text-white mt-0.5">Misi Pendidik Global</h3>
+            <h3 class="text-2xl font-bold">Zon Hafalan Pantas (Kad Imbasan Interaktif)</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Halakan kursor/sentuh kad untuk melihat fakta kunci hafalan bagi peperiksaan/pemahaman.</p>
           </div>
         </div>
-
-        <!-- STATS BAR -->
-        <div class="flex items-center space-x-4 bg-slate-900/80 p-3 rounded-2xl border border-slate-800">
-          <div class="px-3 border-r border-slate-800">
-            <span class="text-[10px] text-slate-400 block font-semibold uppercase">Mata Reputasi</span>
-            <span id="scoreDisplay" class="text-xl font-extrabold text-amber-400">0 PTS</span>
-          </div>
-          <div class="px-3">
-            <span class="text-[10px] text-slate-400 block font-semibold uppercase">Kemajuan Misi</span>
-            <span id="progressDisplay" class="text-xl font-extrabold text-edu-400">1 / 4</span>
-          </div>
-        </div>
+        <span class="hidden sm:inline-block text-xs font-bold bg-amber-100 text-amber-800 dark:bg-amber-900/40 dark:text-amber-300 px-3 py-1 rounded-full">
+          6 Kad Pilihan
+        </span>
       </div>
 
-      <!-- MAIN GAME PLAY AREA -->
-      <div id="gamePlayArea" class="relative z-10 pt-8 space-y-6">
-        <!-- Injected via JavaScript -->
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6">
+        
+        <!-- KAD 1 -->
+        <div class="flip-card h-56 perspective-1000 cursor-pointer">
+          <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-md border border-slate-200 dark:border-slate-700">
+            <!-- Depan -->
+            <div class="absolute inset-0 w-full h-full bg-white dark:bg-slate-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden border-t-4 border-amber-500">
+              <div class="space-y-2">
+                <span class="text-[10px] font-extrabold uppercase text-amber-600 dark:text-amber-400 tracking-wider">Definisi Perkampungan Global</span>
+                <h4 class="font-bold text-base text-slate-900 dark:text-white">Apakah Maksud Perkampungan Global?</h4>
+              </div>
+              <p class="text-xs text-slate-400 flex items-center justify-end gap-1 font-semibold">
+                Sentuh untuk jawapan <i class="fa-solid fa-arrow-rotate-right"></i>
+              </p>
+            </div>
+            <!-- Belakang -->
+            <div class="absolute inset-0 w-full h-full bg-slate-900 text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden border-t-4 border-amber-400">
+              <p class="text-xs leading-relaxed text-slate-200">
+                <strong>Dunia tanpa sempadan fizikal</strong> akibat perkembangan pesat IT. Masyarakat berkongsi isu universal (pencemaran, wabak, dadah, pendidikan).
+              </p>
+              <span class="text-[10px] text-amber-400 font-semibold">Tokoh: Perkins (1992) & Tun Dr. Mahathir (1992)</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- KAD 2 -->
+        <div class="flip-card h-56 perspective-1000 cursor-pointer">
+          <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-md border border-slate-200 dark:border-slate-700">
+            <!-- Depan -->
+            <div class="absolute inset-0 w-full h-full bg-white dark:bg-slate-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden border-t-4 border-edu-500">
+              <div class="space-y-2">
+                <span class="text-[10px] font-extrabold uppercase text-edu-600 dark:text-edu-400 tracking-wider">Formula Aspek IMF</span>
+                <h4 class="font-bold text-base text-slate-900 dark:text-white">4 Aspek Globalisasi IMF (2000)</h4>
+              </div>
+              <p class="text-xs text-slate-400 flex items-center justify-end gap-1 font-semibold">
+                Sentuh untuk jawapan <i class="fa-solid fa-arrow-rotate-right"></i>
+              </p>
+            </div>
+            <!-- Belakang -->
+            <div class="absolute inset-0 w-full h-full bg-slate-900 text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden border-t-4 border-edu-400">
+              <p class="text-xs leading-relaxed text-slate-200">
+                <strong>Akronim Hafalan [P-M-M-I]:</strong><br>
+                1. <strong>P</strong>erdagangan (Barang & Jasa)<br>
+                2. <strong>M</strong>odal (FDI & Aliran Kewangan)<br>
+                3. <strong>M</strong>anusia (Mobiliti Tenaga/Pelajar)<br>
+                4. <strong>I</strong>lmu (Penyebaran Maklumat Global)
+              </p>
+              <span class="text-[10px] text-edu-300 font-semibold">Rujukan: Laporan IMF 2000</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- KAD 3 -->
+        <div class="flip-card h-56 perspective-1000 cursor-pointer">
+          <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-md border border-slate-200 dark:border-slate-700">
+            <!-- Depan -->
+            <div class="absolute inset-0 w-full h-full bg-white dark:bg-slate-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden border-t-4 border-emerald-500">
+              <div class="space-y-2">
+                <span class="text-[10px] font-extrabold uppercase text-emerald-600 dark:text-emerald-400 tracking-wider">Kesan Positif</span>
+                <h4 class="font-bold text-base text-slate-900 dark:text-white">Model Ekonomi Heckscher-Ohlin (HO)</h4>
+              </div>
+              <p class="text-xs text-slate-400 flex items-center justify-end gap-1 font-semibold">
+                Sentuh untuk jawapan <i class="fa-solid fa-arrow-rotate-right"></i>
+              </p>
+            </div>
+            <!-- Belakang -->
+            <div class="absolute inset-0 w-full h-full bg-slate-900 text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden border-t-4 border-emerald-400">
+              <p class="text-xs leading-relaxed text-slate-200">
+                Pemikiran berasaskan <strong>kelebihan berbanding (comparative advantage)</strong>. Pendidik memperkasakan kepakaran khusus yang diiktiraf di pasaran antarabangsa.
+              </p>
+              <span class="text-[10px] text-emerald-300 font-semibold">Impak: Peluang Kerjaya Antarabangsa</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- KAD 4 -->
+        <div class="flip-card h-56 perspective-1000 cursor-pointer">
+          <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-md border border-slate-200 dark:border-slate-700">
+            <!-- Depan -->
+            <div class="absolute inset-0 w-full h-full bg-white dark:bg-slate-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden border-t-4 border-rose-500">
+              <div class="space-y-2">
+                <span class="text-[10px] font-extrabold uppercase text-rose-600 dark:text-rose-400 tracking-wider">Cabaran Utama</span>
+                <h4 class="font-bold text-base text-slate-900 dark:text-white">Ancaman 'Brain Drain'</h4>
+              </div>
+              <p class="text-xs text-slate-400 flex items-center justify-end gap-1 font-semibold">
+                Sentuh untuk jawapan <i class="fa-solid fa-arrow-rotate-right"></i>
+              </p>
+            </div>
+            <!-- Belakang -->
+            <div class="absolute inset-0 w-full h-full bg-slate-900 text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden border-t-4 border-rose-400">
+              <p class="text-xs leading-relaxed text-slate-200">
+                Pengaliran keluar tenaga pakar tempatan ke luar negara demi tawaran gaji & fasiliti lebih baik, menyebabkan kekurangan pakar di tanah air.
+              </p>
+              <span class="text-[10px] text-rose-300 font-semibold">Penyelesaian: Strategi Brain Gain</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- KAD 5 -->
+        <div class="flip-card h-56 perspective-1000 cursor-pointer">
+          <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-md border border-slate-200 dark:border-slate-700">
+            <!-- Depan -->
+            <div class="absolute inset-0 w-full h-full bg-white dark:bg-slate-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden border-t-4 border-purple-500">
+              <div class="space-y-2">
+                <span class="text-[10px] font-extrabold uppercase text-purple-600 dark:text-purple-400 tracking-wider">Cabaran Bahasa</span>
+                <h4 class="font-bold text-base text-slate-900 dark:text-white">Peminggiran Bahasa Ibunda</h4>
+              </div>
+              <p class="text-xs text-slate-400 flex items-center justify-end gap-1 font-semibold">
+                Sentuh untuk jawapan <i class="fa-solid fa-arrow-rotate-right"></i>
+              </p>
+            </div>
+            <!-- Belakang -->
+            <div class="absolute inset-0 w-full h-full bg-slate-900 text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden border-t-4 border-purple-400">
+              <p class="text-xs leading-relaxed text-slate-200">
+                Dominasi Bahasa Inggeris sebagai bahasa komersial global berisiko menghakis kedudukan Bahasa Melayu sebagai bahasa ilmu dan identiti kebangsaan.
+              </p>
+              <span class="text-[10px] text-purple-300 font-semibold">Solusi: Pemantapan Dwibahasa Balans</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- KAD 6 -->
+        <div class="flip-card h-56 perspective-1000 cursor-pointer">
+          <div class="flip-card-inner relative w-full h-full rounded-2xl shadow-md border border-slate-200 dark:border-slate-700">
+            <!-- Depan -->
+            <div class="absolute inset-0 w-full h-full bg-white dark:bg-slate-800 rounded-2xl p-6 flex flex-col justify-between backface-hidden border-t-4 border-cyan-500">
+              <div class="space-y-2">
+                <span class="text-[10px] font-extrabold uppercase text-cyan-600 dark:text-cyan-400 tracking-wider">Metodologi P&P</span>
+                <h4 class="font-bold text-base text-slate-900 dark:text-white">E-Learning & Francais Education</h4>
+              </div>
+              <p class="text-xs text-slate-400 flex items-center justify-end gap-1 font-semibold">
+                Sentuh untuk jawapan <i class="fa-solid fa-arrow-rotate-right"></i>
+              </p>
+            </div>
+            <!-- Belakang -->
+            <div class="absolute inset-0 w-full h-full bg-slate-900 text-white rounded-2xl p-6 flex flex-col justify-between rotate-y-180 backface-hidden border-t-4 border-cyan-400">
+              <p class="text-xs leading-relaxed text-slate-200">
+                Transformasi pedagogi tradisional kepada bilik darjah maya, ijazah francais antarabangsa, dan akses perpustakaan digital global.
+              </p>
+              <span class="text-[10px] text-cyan-300 font-semibold">Teras: Epistemologi Rasionalisme</span>
+            </div>
+          </div>
+        </div>
+
       </div>
     </section>
 
-  </main>
+    <!-- NOTA LENGKAP PENUH SILIBUS -->
+    <div id="nota-lengkap" class="space-y-16 pt-6">
 
-  <!-- FOOTER -->
-  <footer class="bg-edu-900 text-slate-300 py-8 px-6 text-center text-xs border-t border-edu-800 space-y-2">
-    <div class="flex justify-center items-center space-x-2 text-white font-bold text-sm">
-      <i class="fa-solid fa-graduation-cap text-edu-500"></i>
-      <span>Akademi Pendidikan Interaktif</span>
-    </div>
-    <p>© Modul Pendidikan & Game Misi Pendidik Global.</p>
-  </footer>
-
-  <script>
-    // Theme Toggle
-    document.getElementById('themeToggle').addEventListener('click', () => {
-      document.documentElement.classList.toggle('dark');
-    });
-
-    // SIMULASI MINI-GAME "MISI PENDIDIK GLOBAL"
-    const missions = [
-      {
-        id: 1,
-        title: "KAPITEL 1: Cabaran Brain Drain di Fakulti",
-        category: "Isu Tenaga Pakar",
-        icon: "fa-user-graduate",
-        scenario: "Seorang pensyarah kanan berprestasi tinggi di universiti tempatan menerima tawaran gaji tiga kali ganda daripada universiti luar negara. Apakah tindakan paling strategik yang mematuhi pemahaman konsep globalisasi?",
-        options: [
-          {
-            text: "A) Menghalang pensyarah tersebut dengan menyekat pasport dan dokumen akademik beliau.",
-            correct: false,
-            feedback: "Gagal! Dalam era globalisasi, dunia fizikal mungkin bersempadan, tetapi sebarang usaha penyekatan paksa menyalahi prinsip mobiliti tenaga kerja antarabangsa."
-          },
-          {
-            text: "B) Menyediakan insentif penyelidikan, fasiliti moden, serta laluan kerjaya berasaskan prestasi untuk mengekalkan beliau (Brain Gain).",
-            correct: true,
-            feedback: "Cemerlang! Fenomena Brain Drain diimbangi dengan memperkasakan daya tarikan domestik dan pengiktirafan bakat."
-          }
-        ]
-      },
-      {
-        id: 2,
-        title: "KAPITEL 2: Integriti & Komersialisasi Pendidikan",
-        category: "Etika & Pentadbiran",
-        icon: "fa-scale-balanced",
-        scenario: "Sebuah institusi pendidikan swasta bercadang merendahkan gred kelulusan kemasukan bagi pelajar antarabangsa demi mengejar pendapatan modal asing. Sebagai pemimpin akademik, apakah keputusan anda?",
-        options: [
-          {
-            text: "A) Mempertahankan standard akademik antarabangsa dan etika tanpa mengorbankan kualiti demi komersialisasi semata-mata.",
-            correct: true,
-            feedback: "Tepat Sekali! Komersialisasi tidak boleh mengatasi standard kualiti dan integriti ilmu."
-          },
-          {
-            text: "B) Bersetuju dengan cadangan tersebut kerana aliran modal asing (FDI) adalah keutamaan tunggal globalisasi.",
-            correct: false,
-            feedback: "Pilihan Kurang Tepat! Risiko komersialisasi berlebihan boleh merosakkan reputasi dan kualiti sistem pendidikan tempatan."
-          }
-        ]
-      },
-      {
-        id: 3,
-        title: "KAPITEL 3: Penguasaan Bahasa & Identiti Nasional",
-        category: "Sosiologi Pendidikan",
-        icon: "fa-language",
-        scenario: "Dalam mesyuarat kurikulum, wujud cadangan untuk menghapuskan penggunaan Bahasa Melayu sepenuhnya dan menggantikannya dengan Bahasa Inggeris dalam semua mata pelajaran.",
-        options: [
-          {
-            text: "A) Mengamalkan pendekatan dwibahasa: Memperkasakan Bahasa Melayu sebagai bahasa ilmu & identiti, serta menguasai Bahasa Inggeris untuk daya saing global.",
-            correct: true,
-            feedback: "Sangat Bijak! Ini sejajar dengan implikasi positif globalisasi iaitu penguasaan dwibahasa tanpa meminggirkan bahasa ibunda."
-          },
-          {
-            text: "B) Menghentikan terus pengajaran Bahasa Melayu kerana ia tidak mempunyai nilai ekonomi antarabangsa.",
-            correct: false,
-            feedback: "Tindakan Berisiko! Peminggiran bahasa ibunda merupakan salah satu ancaman utama globalisasi yang perlu dielakkan."
-          }
-        ]
-      },
-      {
-        id: 4,
-        title: "KAPITEL 4: Kebanjiran Maklumat Tanpa Tapisan",
-        category: "Epistemologi & IT",
-        icon: "fa-laptop-code",
-        scenario: "Pelajar menggunakan AI dan carian internet secara meluas tetapi sering mengambil maklumat palsu dalam tugasan P&P. Bagaimanakah pedagogi guru diubah?",
-        options: [
-          {
-            text: "A) Melarang penggunaan internet dan komputer sepenuhnya di dalam bilik darjah.",
-            correct: false,
-            feedback: "Langkah Berundur! Melarang teknologi tidak menyelesaikan masalah dalam perkampungan global."
-          },
-          {
-            text: "B) Menerapkan pemikiran rasionalisme dan literasi digital untuk membimbing pelajar menyaring kebenaran maklumat.",
-            correct: true,
-            feedback: "Tepat! Berdasarkan epistemologi rasionalisme, pendidik harus melatih pelajar menyaring maklumat berasaskan bukti saintifik."
-          }
-        ]
-      }
-    ];
-
-    let currentMissionIndex = 0;
-    let score = 0;
-
-    function renderMission() {
-      const container = document.getElementById('gamePlayArea');
-      document.getElementById('progressDisplay').innerText = `${currentMissionIndex + 1} / ${missions.length}`;
-
-      if (currentMissionIndex >= missions.length) {
-        container.innerHTML = `
-          <div class="bg-slate-900/90 border border-amber-500/30 p-8 rounded-2xl text-center space-y-6">
-            <div class="w-20 h-20 bg-amber-500/20 text-amber-400 rounded-full flex items-center justify-center mx-auto text-4xl border border-amber-500/40">
-              <i class="fa-solid fa-trophy"></i>
-            </div>
-            <div class="space-y-2">
-              <h4 class="text-3xl font-black text-white">TAHNIAH! MISI SELESAI</h4>
-              <p class="text-slate-300 text-sm max-w-md mx-auto">Anda telah berjaya menyelesaikan semua cabaran keputusan simulasi Pendidik Global dengan cemerlang.</p>
-            </div>
-            <div class="bg-slate-950 p-4 rounded-xl inline-block border border-slate-800">
-              <span class="text-xs text-slate-400 block uppercase">Jumlah Reputasi Akhir</span>
-              <span class="text-3xl font-black text-amber-400">${score} PTS</span>
-            </div>
-            <div>
-              <button onclick="resetGame()" class="bg-gradient-to-r from-amber-500 to-amber-600 hover:from-amber-600 hover:to-amber-700 text-slate-950 font-extrabold px-8 py-3.5 rounded-xl transition shadow-lg text-sm inline-flex items-center gap-2">
-                <i class="fa-solid fa-rotate-right"></i> Main Semula Misi
-              </button>
-            </div>
+      <!-- SEKSYEN 1: DEFINISI & PERKAMPUNGAN GLOBAL -->
+      <section class="space-y-6">
+        <div class="flex items-center space-x-3 border-b border-slate-200 dark:border-slate-700 pb-4">
+          <div class="p-3 bg-edu-500 text-white rounded-xl shadow-md">
+            <i class="fa-solid fa-globe text-xl"></i>
           </div>
-        `;
-        return;
-      }
-
-      const m = missions[currentMissionIndex];
-      container.innerHTML = `
-        <div class="bg-slate-900/90 border border-slate-800 p-6 md:p-8 rounded-2xl space-y-6">
-          <div class="flex items-center justify-between border-b border-slate-800 pb-4">
-            <div class="flex items-center space-x-3">
-              <div class="p-2.5 bg-amber-500/10 text-amber-400 border border-amber-500/20 rounded-xl">
-                <i class="fa-solid ${m.icon} text-lg"></i>
-              </div>
-              <div>
-                <span class="text-[10px] uppercase font-extrabold tracking-wider text-amber-400 block">${m.category}</span>
-                <h4 class="font-extrabold text-base text-white">${m.title}</h4>
-              </div>
-            </div>
+          <div>
+            <h3 class="text-2xl font-bold">1. Pengenalan & Perkampungan Global</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Latar belakang, takrifan sejarah, dan dimensi utama globalisasi.</p>
           </div>
-
-          <div class="space-y-2">
-            <p class="text-xs text-slate-400 uppercase font-semibold">Situasi Simulasi:</p>
-            <p class="text-sm text-slate-200 leading-relaxed font-medium bg-slate-950/60 p-4 rounded-xl border border-slate-800/80">
-              "${m.scenario}"
-            </p>
-          </div>
-
-          <div class="space-y-3 pt-2">
-            <p class="text-xs text-slate-400 uppercase font-semibold">Pilih Keputusan Pendidik:</p>
-            ${m.options.map((opt, i) => `
-              <button onclick="makeDecision(${opt.correct}, '${opt.feedback.replace(/'/g, "\\'")}')" class="w-full text-left p-4 bg-slate-950/40 hover:bg-slate-800/80 border border-slate-800 hover:border-amber-500/50 rounded-xl transition text-xs text-slate-200 flex items-start space-x-3 group">
-                <span class="w-6 h-6 rounded-lg bg-slate-800 text-slate-300 group-hover:bg-amber-500 group-hover:text-slate-950 flex items-center justify-center font-bold shrink-0 transition">${i === 0 ? 'A' : 'B'}</span>
-                <span class="pt-0.5 leading-relaxed">${opt.text}</span>
-              </button>
-            `).join('')}
-          </div>
-
-          <div id="gameFeedback" class="hidden p-4 rounded-xl text-xs font-semibold leading-relaxed border"></div>
         </div>
-      `;
-    }
 
-    function makeDecision(isCorrect, feedbackText) {
-      const fb = document.getElementById('gameFeedback');
-      fb.classList.remove('hidden', 'bg-emerald-500/10', 'text-emerald-300', 'border-emerald-500/30', 'bg-rose-500/10', 'text-rose-300', 'border-rose-500/30');
-
-      if (isCorrect) {
-        score += 250;
-        document.getElementById('scoreDisplay').innerText = `${score} PTS`;
-        fb.classList.add('bg-emerald-500/10', 'text-emerald-300', 'border-emerald-500/30');
-        fb.innerHTML = `<div class="flex items-start gap-2"><i class="fa-solid fa-circle-check text-base mt-0.5"></i> <span>${feedbackText} (+250 Reputasi)</span></div>`;
-      } else {
-        fb.classList.add('bg-rose-500/10', 'text-rose-300', 'border-rose-500/30');
-        fb.innerHTML = `<div class="flex items-start gap-2"><i class="fa-solid fa-circle-xmark text-base mt-0.5"></i> <span>${feedbackText} (+0 Reputasi)</span></div>`;
-      }
-
-      setTimeout(() => {
-        currentMissionIndex++;
-        renderMission();
-      }, 3000);
-    }
-
-    function resetGame() {
-      currentMissionIndex = 0;
-      score = 0;
-      document.getElementById('scoreDisplay').innerText = `0 PTS`;
-      renderMission();
-    }
-
-    // Initialize Game
-    renderMission();
-  </script>
-</body>
-</html>
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+          <div class="bg-white dark:bg-slate-800 p-6 rounded-2xl shadow-sm border border-slate-200 dark:border-slate-700 space-y-3">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-bold text-edu-600 bg-edu-50 dark:bg-edu-900/40 px-3 py-1 rounded-full uppercase">Konsep Asas</span>
+              <i class="fa-solid fa-circle-info text-edu-500"></i>
+            </div>
+            <h4 class="font-bold text-base text-slate-900 dark:text-white">Perkampungan Global (Global Village)</h4>
+            <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed">
+              Ditakrifkan oleh **Perkins (1992)** dan dipelopori dalam konteks Malaysia oleh **Tun Dr. Mahathir (1992)**. Perkembangan pesat teknologi maklumat dan komunikasi (IT) menjadikan dunia semakin rapat seperti sebuah kampung tanpa sempadan fizikal. 
+            </p>
+            <div class="p-3 bg-slate-50 dark:bg-slate-900/60 rounded-xl border border-slate-100 dark:border-slate-800 text-[11px] text-slate-500 dark:text-slate-400">
+              <strong>Isu Universal Bersama:</strong> Masalah alam sekitar/pencemaran, ancaman wabak penyakit, jen
